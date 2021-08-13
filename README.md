@@ -15,7 +15,8 @@
 
 ### Association
 
-* has_many items
+* has_many :items
+* has_many :orders
 
 ## itemsテーブル
 
@@ -33,6 +34,30 @@
 
 ### Association
 
-* belongs_to user
+* belongs_to :user
+* has_many :orders
+* has_one_attached :image
+* gem 'mini_magick'
+* gem 'image_processing', '~> 1.2'
 
-## item_images(active storage)
+## orders テーブル 
+
+| Column         | Type       | Options     |
+| -------------- | ---------- | ----------- |
+| card_number    | integer    | null: false |
+| card_exp_month | integer    | null: false |
+| card_exp_year  | integer    | null: false |
+| cad_cvc        | integer    | null: false |
+| postal_code    | string     | null: false |
+| prefecture     | string     | null: false |
+| city           | string     | null: false |
+| addresses      | string     | null: false |
+| building       | references | null: false |
+| phone_number   | references | null: false |
+| user           | references | null: false |
+| item           | references | null: false |
+
+### association
+
+* belongs_to :user
+* belongs_to :item
