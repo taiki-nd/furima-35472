@@ -44,16 +44,12 @@
 
 | Column         | Type       | Options     |
 | -------------- | ---------- | ----------- |
-| card_number    | integer    | null: false |
-| card_exp_month | integer    | null: false |
-| card_exp_year  | integer    | null: false |
-| cad_cvc        | integer    | null: false |
 | postal_code    | string     | null: false |
 | prefecture     | string     | null: false |
 | city           | string     | null: false |
 | addresses      | string     | null: false |
-| building       | references | null: false |
-| phone_number   | references | null: false |
+| building       | string     | null: false |
+| phone_number   | integer    | null: false |
 | user           | references | null: false |
 | item           | references | null: false |
 
@@ -61,3 +57,4 @@
 
 * belongs_to :user
 * belongs_to :item
+* gem 'payjp'
