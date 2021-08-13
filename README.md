@@ -11,7 +11,7 @@
 | first_name      | string | null: false |
 | last_name_kana  | string | null: false |
 | first_name_kana | string | null: false |
-| birth_day       | text   | null: false |
+| birth_day       | date   | null: false |
 
 ### Association
 
@@ -27,7 +27,7 @@
 | item_sales_status        | string     | null: false |
 | item_shipping_fee_status | string     | null: false |
 | item_prefecture          | string     | null: false |
-| item_sucheduled_delivery | integer    | null: false |
+| item_scheduled_delivery  | integer    | null: false |
 | price                    | integer    | null: false |
 | user                     | references | null: false |
 
