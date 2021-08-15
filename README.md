@@ -17,7 +17,6 @@
 
 * has_many :items
 * has_many :orders
-* has_one :addresses
 
 ## orders テーブル 
 
@@ -41,30 +40,29 @@
 | city               | string     | null: false                    |
 | addresses          | string     | null: false                    |
 | building           | string     |                                |
-| phone_number       | integer    | null: false                    |
+| phone_number       | string     | null: false                    |
 | order              | references | null: false, foreign_key: true |
 
 ### association
 
-* belongs_to :user
 * belongs_to :order
 
 ## itemsテーブル
 
-| Column                      | Type       | Options     |
-| --------------------------- | ---------- | ----------- |
-| item_name                   | string     | null: false |
-| item_info                   | text       | null: false |
-| item_category_id            | integer    | null: false |
-| item_sales_status_id        | integer    | null: false |
-| item_shipping_fee_status_id | integer    | null: false |
-| item_prefecture_id          | integer    | null: false |
-| item_scheduled_delivery_id  | integer    | null: false |
-| price                       | integer    | null: false |
-| user_id                     | references | null: false |
+| Column                      | Type       | Options                        |
+| --------------------------- | ---------- | ------------------------------ |
+| item_name                   | string     | null: false                    |
+| item_info                   | text       | null: false                    |
+| item_category_id            | integer    | null: false                    |
+| item_sales_status_id        | integer    | null: false                    |
+| item_shipping_fee_status_id | integer    | null: false                    |
+| item_prefecture_id          | integer    | null: false                    |
+| item_scheduled_delivery_id  | integer    | null: false                    |
+| price                       | integer    | null: false                    |
+| user                        | references | null: false, foreign_key: true |
 
 ### Association
 
 * belongs_to :user
-* has_many :orders
+* has_one :orders
 * has_one_attached :image
