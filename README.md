@@ -2,19 +2,16 @@
 
 ## users テーブル
 
-| Column          | Type       | Options     |
-| --------------- | ---------- | ----------- |
-| name            | string     | null: false |
-| email           | string     | null: false |
-| password        | string     | null: false |
-| last_name       | string     | null: false |
-| first_name      | string     | null: false |
-| last_name_kana  | string     | null: false |
-| first_name_kana | string     | null: false |
-| birth_day_y     | integer    | null: false |
-| birth_day_m     | integer    | null: false |
-| birth_day_d     | integer    | null: false |
-| addresses       | references | null: false |
+| Column             | Type       | Options                  |
+| ------------------ | ---------- | ------------------------ |
+| name               | string     | null: false              |
+| email              | string     | null: false, unique:true |
+| encrypted_password | string     | null: false              |
+| last_name          | string     | null: false              |
+| first_name         | string     | null: false              |
+| last_name_kana     | string     | null: false              |
+| first_name_kana    | string     | null: false              |
+| birth_day          | date       | null: false              |
 
 ### Association
 
@@ -22,13 +19,12 @@
 * has_one :cards
 * has_one addresses
 
-## cards テーブル 
+## orders テーブル 
 
 | Column         | Type       | Options     |
 | -------------- | ---------- | ----------- |
-| customer_id    | integer    | null: false |
-| user_id        | integer    | null: false |
-| card           | references | null: false |
+| item_id        | references | null: false |
+| user_id        | references | null: false |
 
 ### association
 
@@ -36,7 +32,7 @@
 * belongs_to :item
 * gem 'payjp'
 
-## addressesテーブル
+## addresses テーブル
 
 | Column         | Type       | Options     |
 | -------------- | ---------- | ----------- |
