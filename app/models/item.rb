@@ -7,7 +7,7 @@ class Item < ApplicationRecord
     validates :item_sales_status_id, numericality: { other_than: 1, message: "can't be blank" }
     validates :item_shipping_fee_status_id, numericality: { other_than: 1, message: "can't be blank" }
     validates :item_prefecture_id
-    validates :item_scheduled_delivery_id
+    validates :item_scheduled_delivery_id, numericality: { other_than: 1, message: "can't be blank" }
     validates :price, format: { with: /\A[0-9]+\z/ }, numericality: { less_than_or_equal_to: 9999999, greater_than_or_equal_to: 300 }
   end
 
@@ -18,5 +18,6 @@ class Item < ApplicationRecord
   belongs_to :item_category
   belongs_to :item_sales_status
   belongs_to :item_shipping_fee_status
+  belongs_to :item_scheduled_delivery
 
 end
