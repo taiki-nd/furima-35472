@@ -4,7 +4,7 @@ class Item < ApplicationRecord
     validates :item_name
     validates :item_info
     validates :item_category_id, numericality: { other_than: 1, message: "can't be blank" }
-    validates :item_sales_status_id
+    validates :item_sales_status_id, numericality: { other_than: 1, message: "can't be blank" }
     validates :item_shipping_fee_status_id
     validates :item_prefecture_id
     validates :item_scheduled_delivery_id
@@ -16,5 +16,6 @@ class Item < ApplicationRecord
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :item_category
+  belongs_to :item_sales_status
 
 end
