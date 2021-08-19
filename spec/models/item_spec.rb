@@ -54,6 +54,31 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Item scheduled delivery can't be blank")
       end
+      it 'item_category_idが1では出品できない' do
+        @item.item_category_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Item category can't be blank")
+      end
+      it 'item_sales_status_idが1では出品できない' do
+        @item.item_sales_status_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Item sales status can't be blank")
+      end
+      it 'item_shipping_fee_status_idが1では出品できない' do
+        @item.item_shipping_fee_status_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Item shipping fee status can't be blank")
+      end
+      it 'item_prefecture_idが1では出品できない' do
+        @item.item_prefecture_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Item prefecture can't be blank")
+      end
+      it 'item_scheduled_delivery_idが1では出品できない' do
+        @item.item_scheduled_delivery_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Item scheduled delivery can't be blank")
+      end
       it 'priceが空では出品できない' do
         @item.price = ''
         @item.valid?
@@ -68,6 +93,21 @@ RSpec.describe Item, type: :model do
         @item.price = 10000100
         @item.valid?
         expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
+      end
+      it 'priceが半角英数混合では出品できない' do
+        @item.price = '500aa'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is not a number")
+      end
+      it 'priceが半角英語だけでは出品できない' do
+        @item.price = 'aaaaa'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is not a number")
+      end
+      it 'priceが半角英語だけでは出品できない' do
+        @item.price = '５０００'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is not a number")
       end
 
       it 'ユーザーが紐付いていなければ出品できない' do
