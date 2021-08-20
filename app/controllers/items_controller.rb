@@ -23,9 +23,9 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-  def upload
+  def update
     item = Item.find(params[:id])
-    if item.upload(item_params)
+    if item.update(item_params)
       redirect_to action: :show
     else
       render action: :edit
