@@ -1,6 +1,6 @@
 class ItemUser < ApplicationRecord
   include ActiveModel::Model
-  attr_accessor :token, :postal_code, :item_prefecture_id, :city_name, :block_name, :building_name, :phone_number, :item_id, :user_id
+  attr_accessor :token, :postal_code, :item_prefecture_id, :city, :addresses, :building, :phone_number, :item_id, :user_id
 
   with_options presence: true do
     validates :token, :city_name, :block_name
