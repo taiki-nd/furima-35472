@@ -19,6 +19,19 @@ class ItemsController < ApplicationController
     end
   end
 
+  def edit
+    @item = Item.find(params[:id])
+  end
+
+  def upload
+    item = Item.find(params[:id])
+    if item.upload(item_params)
+      redirect_to action: :show
+    else
+      render action: :edit
+    end
+  end
+
   def show
     @item = Item.find(params[:id])
   end
