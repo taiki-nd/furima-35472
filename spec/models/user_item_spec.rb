@@ -37,6 +37,11 @@ RSpec.describe UserItem, type: :model do
         @user_item.valid?
         expect(@user_item.errors.full_messages).to include("Postal code is invalid")
       end
+      it 'postal_codeが8桁でないと保存できないこと' do
+        @user_item.postal_code = "123-458"
+        @user_item.valid?
+        expect(@user_item.errors.full_messages).to include("Postal code is invalid")
+      end
       it 'item_prefecture_idを選択していないと保存できないこと' do
         @user_item.item_prefecture_id = 1
         @user_item.valid?
@@ -76,6 +81,11 @@ RSpec.describe UserItem, type: :model do
         @user_item.phone_number = '0901111４５６７'
         @user_item.valid?
         expect(@user_item.errors.full_messages).to include("Phone number is invalid")
+      end
+      it "tokenが空では登録できないこと" do
+        @user_item.token = nil
+        @user_item.valid?
+        expect(@user_item.errors.full_messages).to include("Token can't be blank")
       end
     end
   end
