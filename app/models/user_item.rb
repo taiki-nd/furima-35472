@@ -3,6 +3,7 @@ class UserItem
   attr_accessor :token, :postal_code, :item_prefecture_id, :city, :addresses, :building, :phone_number, :item_id, :user_id
 
   with_options presence: true do
+    validates :token
     validates :city
     validates :addresses
     validates :item_prefecture_id, numericality: { other_than: 1 }
