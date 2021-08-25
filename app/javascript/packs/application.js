@@ -9,7 +9,7 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
 require("../item_price");
-
+require("../card");
 Rails.start()
 //Turbolinks.start()
 ActiveStorage.start()
