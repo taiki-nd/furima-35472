@@ -37,7 +37,7 @@ RSpec.describe UserItem, type: :model do
         @user_item.valid?
         expect(@user_item.errors.full_messages).to include("Postal code is invalid")
       end
-      it 'postal_codeが8桁でないと保存できないこと' do
+      it 'postal_codeが3桁-4桁でないと保存できないこと' do
         @user_item.postal_code = "123-458"
         @user_item.valid?
         expect(@user_item.errors.full_messages).to include("Postal code is invalid")
