@@ -1,6 +1,6 @@
 class UserItem
   include ActiveModel::Model
-  attr_accessor :postal_code, :item_prefecture_id, :city, :addresses, :building, :phone_number, :item_id, :user_id
+  attr_accessor :token, :postal_code, :item_prefecture_id, :city, :addresses, :building, :phone_number, :item_id, :user_id
 
   with_options presence: true do
     validates :city
