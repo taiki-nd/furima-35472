@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_17_120232) do
+ActiveRecord::Schema.define(version: 2021_08_22_083024) do
 
   create_table "active_storage_attachments", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -40,6 +40,19 @@ ActiveRecord::Schema.define(version: 2021_08_17_120232) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "addresses", charset: "utf8mb4", force: :cascade do |t|
+    t.string "postal_code"
+    t.integer "item_prefecture_id"
+    t.string "city"
+    t.string "addresses"
+    t.string "building"
+    t.string "phone_number"
+    t.bigint "order_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_id"], name: "index_addresses_on_order_id"
+  end
+
   create_table "items", charset: "utf8mb4", force: :cascade do |t|
     t.string "item_name"
     t.text "item_info"
@@ -53,6 +66,15 @@ ActiveRecord::Schema.define(version: 2021_08_17_120232) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_items_on_user_id"
+  end
+
+  create_table "orders", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "item_id"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_orders_on_item_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
