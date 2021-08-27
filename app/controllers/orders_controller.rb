@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
     if user_signed_in? && current_user.id != @item.user_id
       @user_item = UserItem.new
     else
-      redirect_to root_path
+      redirect_to new_user_session_path
     end
   end
 
