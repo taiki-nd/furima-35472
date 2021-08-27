@@ -22,9 +22,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    if @item.order != nil
-      redirect_to action: :index
-    end
   end
 
   def update
@@ -41,9 +38,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    if user_signed_in? && @item.order != nil && current_user.id != @item.user_id
-      redirect_to action: :index
-    end
   end
 
   private
